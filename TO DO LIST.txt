@@ -1,0 +1,28 @@
+Theme: Repair
+General Idea: Knight fantasy world repair things after dragon destruction
+
+Gameplay Idea:
+1) City has health, dragon will attack after a set amount of time
+2) Dragon is attacking while you fixing city, 0% health is gameover
+3) muk monsters, bleach throw kills multiple enemies also needs to be catched
+
+4) Heros will come after stalling for a set amount of time and kill dragon
+5) Last level wont have heroes, it's up to the janitor to save the day
+6) Cleaning skills are also counted as attacking skills (i.e. Sweeping Edge)
+7) Need different tools to fix different damages, but can only carry one tool at a time (maybe bad idea)
+8) animated non living beings 
+
+Important things to include:
+1) platformer script
+2) skills (w/ or w/o levels)
+3) character design
+4) different tools
+5) progressive learning
+6) music and sfx
+
+optionaL:
+1) complex animation
+2) cutscenes
+3) monsters
+4) optional endings
+
