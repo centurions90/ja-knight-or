@@ -1,0 +1,12 @@
+High Priority:
+1. Jump Sound Effect
+2. Running Sound Effect
+
+Medium Priority:
+1. Attack Sound Effect
+2. Skill Sounds
+3. Gameplay Music
+
+Low Priority:
+1. Cutscene Music
+2. Ambient Sounds
