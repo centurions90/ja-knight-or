@@ -26,4 +26,5 @@ optionaL:
 3) monsters
 4) optional endings
 5) dialogue
+6) tutorial
 
