@@ -3,7 +3,7 @@ extends KinematicBody2D
 export(float) var gravity = 900
 
 # pixels per second
-export(float) var walk_speed = 250
+export(float) var walk_speed = 280
 
 # doesn't work yet
 export(float) var walk_acceleration = 2
