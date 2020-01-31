@@ -17,7 +17,7 @@ export(float) var jump_speed = 20
 # doesn't work yet
 export(float) var fall_speed = 20
 
-var floor_normal = Vector2(0, 1)
+var floor_normal = Vector2(0, -1)
 var linear_vel = Vector2()
 
 func _physics_process(delta):
@@ -42,4 +42,4 @@ func _physics_process(delta):
 
 	# Jumping
 	if on_floor and Input.is_action_just_pressed("jump"):
-		linear_vel.y = -jump_speed
+		linear_vel.y = -jump_height
