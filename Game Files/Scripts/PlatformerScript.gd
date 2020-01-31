@@ -3,14 +3,14 @@ extends KinematicBody2D
 # pixels per second
 export(float) var walk_speed = 280
 
-export(float, 0, 1) var walk_acceleration = 2
-export(float, 0, 1) var walk_deceleration = 4
+export(float, 0, 1) var walk_acceleration = 0.5
+export(float, 0, 1) var walk_deceleration = 0.5
 
-export(float) var jump_height = 480
+export(float) var jump_height = 100
+export(float) var jump_deceleration = 60
 
-# doesn't work yet
-export(float) var fall_speed = 20
-export(float) var fall_acceleration = 4
+export(float) var fall_speed = 500
+export(float) var fall_acceleration = 100
 
 var floor_normal = Vector2(0, -1)
 var linear_vel = Vector2()
@@ -29,14 +29,22 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		target_speed += 1.0
 	
-	# Acceleration and deceleration
-	var acceleration = 0
+	# Acceleration and Deceleration
+	var x_acceleration = 0
 	if target_speed != 0:
-		acceleration = walk_acceleration
+		x_acceleration = walk_acceleration
 	else:
-		acceleration = walk_deceleration
-	linear_vel.x = lerp(linear_vel.x, target_speed * walk_speed, acceleration)
+		x_acceleration = walk_deceleration
+	linear_vel.x = lerp(linear_vel.x, target_speed * walk_speed, x_acceleration)
 
 	# Jumping
 	if on_floor and Input.is_action_just_pressed("jump"):
 		linear_vel.y = -jump_height
+	
+	# Falling
+	if !on_floor and linear_vel.y < 0:
+		linear_vel.y += jump_deceleration * delta
+	elif linear_vel.y >= 0:
+		linear_vel.y += fall_acceleration * delta
+	
+	linear_vel.y = min(linear_vel.y, fall_speed)
