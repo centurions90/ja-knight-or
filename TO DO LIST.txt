@@ -25,4 +25,5 @@ optionaL:
 2) cutscenes
 3) monsters
 4) optional endings
+5) dialogue
 
