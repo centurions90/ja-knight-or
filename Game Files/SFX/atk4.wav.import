@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/atk4.wav-3a25d00bbe2eb3111c6f3a4f0d951909.sample"
+
+[deps]
+
+source_file="res://SFX/atk4.wav"
+dest_files=[ "res://.import/atk4.wav-3a25d00bbe2eb3111c6f3a4f0d951909.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
