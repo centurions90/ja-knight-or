@@ -20,7 +20,14 @@ onready var anim_tree = $AnimationTree
 onready var sprite = $Pivot/Sprite
 onready var pivot = $Pivot
 onready var walking_sound = $"Walking Sound"
-onready var attack_sound = $"Attack Sound"
+onready var attack1 = $Attack1
+onready var attack2 = $Attack2
+onready var attack3 = $Attack3
+onready var attack4 = $Attack4
+onready var rand = RandomNumberGenerator.new()
+
+func _ready():
+	rand.randomize()
 
 func _physics_process(delta):
 	# Move and slide
@@ -96,7 +103,17 @@ func _physics_process(delta):
 	if !up_attacked and Input.is_action_pressed("look_up") and Input.is_action_just_pressed("attack"):
 		linear_vel.y = -jump_height
 		up_attacked = true
-		attack_sound.play()
+		
+		var temp = rand.randi_range(0, 3)
+		if temp == 0:
+			attack1.play()
+		elif temp == 1:
+			attack2.play()
+		elif temp == 2:
+			attack3.play()
+		else:
+			attack4.play()
+		
 		anim_tree["parameters/conditions/up_attacked"] = true
 		yield(get_tree().create_timer(0.29), "timeout")
 		anim_tree["parameters/conditions/up_attacked"] = false

@@ -20,7 +20,6 @@ displace = 400.0
 
 [node name="sky1" type="Sprite" parent="Main Camera"]
 modulate = Color( 0.635294, 0.376471, 0.341176, 1 )
-position = Vector2( -7.28503, 43.6075 )
 scale = Vector2( 1.2575, 1.2575 )
 texture = ExtResource( 4 )
 
