@@ -18,6 +18,7 @@ var linear_vel = Vector2()
 onready var anim_tree = $AnimationTree
 onready var sprite = $Pivot/Sprite
 onready var pivot = $Pivot
+onready var walking_sound = $"Walking Sound"
 
 func _physics_process(delta):
 	# Move and slide
@@ -35,6 +36,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		target_speed += 1.0
 		pivot.scale = Vector2(1, 1)
+	
+	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and on_floor:
+		if !walking_sound.playing:
+			walking_sound.play()
+	else:
+		walking_sound.stop()
 	
 	# Animation
 	if target_speed == 0:
