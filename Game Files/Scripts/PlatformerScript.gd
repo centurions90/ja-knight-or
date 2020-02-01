@@ -1,16 +1,16 @@
 extends KinematicBody2D
 
 # pixels per second
-export(float) var walk_speed = 280
+export(float) var walk_speed = 800
 
-export(float, 0, 1) var walk_acceleration = 0.5
-export(float, 0, 1) var walk_deceleration = 0.5
+export(float, 0, 1) var walk_acceleration = 0.052
+export(float, 0, 1) var walk_deceleration = 0.141
 
-export(float) var jump_height = 100
-export(float) var jump_deceleration = 60
+export(float) var jump_height = 575
+export(float) var jump_deceleration = 1200
 
-export(float) var fall_speed = 500
-export(float) var fall_acceleration = 100
+export(float) var fall_speed = 1200
+export(float) var fall_acceleration = 2200
 
 var floor_normal = Vector2(0, -1)
 var linear_vel = Vector2()
