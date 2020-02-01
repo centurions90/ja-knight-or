@@ -14,11 +14,13 @@ export(float) var fall_acceleration = 2200
 
 var floor_normal = Vector2(0, -1)
 var linear_vel = Vector2()
+var up_attacked = false
 
 onready var anim_tree = $AnimationTree
 onready var sprite = $Pivot/Sprite
 onready var pivot = $Pivot
 onready var walking_sound = $"Walking Sound"
+onready var attack_sound = $"Attack Sound"
 
 func _physics_process(delta):
 	# Move and slide
@@ -79,7 +81,7 @@ func _physics_process(delta):
 		anim_tree["parameters/conditions/is_falling"] = false
 		anim_tree["parameters/conditions/on_floor"] = true
 	
-	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") and on_floor):
+	if (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")) and on_floor:
 		anim_tree["parameters/conditions/roll"] = true
 	else:
 		anim_tree["parameters/conditions/roll"] = false
@@ -87,3 +89,14 @@ func _physics_process(delta):
 	linear_vel.y = min(linear_vel.y, fall_speed)
 	
 	### ATTACK ###
+	if on_floor:
+		up_attacked = false
+		anim_tree["parameters/conditions/up_attacked"] = false
+	
+	if !up_attacked and Input.is_action_pressed("look_up") and Input.is_action_just_pressed("attack"):
+		linear_vel.y = -jump_height
+		up_attacked = true
+		attack_sound.play()
+		anim_tree["parameters/conditions/up_attacked"] = true
+		yield(get_tree().create_timer(0.29), "timeout")
+		anim_tree["parameters/conditions/up_attacked"] = false
