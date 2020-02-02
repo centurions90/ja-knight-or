@@ -7,7 +7,6 @@
 [resource]
 resource_name = "Upper Attack"
 length = 0.29
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pivot/Sprite:position")
@@ -100,7 +99,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.0850927, 0.283238 ),
+"times": PoolRealArray( 0.0850927, 0.259299 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -112,7 +111,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.0850927, 0.283238 ),
+"times": PoolRealArray( 0, 0.267356 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]

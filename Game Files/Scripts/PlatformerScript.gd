@@ -19,12 +19,18 @@ var up_attacked = false
 onready var anim_tree = $AnimationTree
 onready var sprite = $Pivot/Sprite
 onready var pivot = $Pivot
+onready var swoosh = $Pivot/Swoosh
 onready var walking_sound = $"Walking Sound"
 onready var attack1 = $Attack1
 onready var attack2 = $Attack2
 onready var attack3 = $Attack3
 onready var attack4 = $Attack4
 onready var rand = RandomNumberGenerator.new()
+onready var cracks:TileMap = $"../Cracks"
+
+func removeTile(var value):
+	var world = cracks.world_to_map(value)
+	cracks.set_cell(world.x, world.y, clamp(cracks.get_cell(world.x, world.y) - 1, -1, 2))
 
 func _ready():
 	rand.randomize()
@@ -100,7 +106,7 @@ func _physics_process(delta):
 		up_attacked = false
 		anim_tree["parameters/conditions/up_attacked"] = false
 	
-	if !up_attacked and Input.is_action_pressed("look_up") and Input.is_action_just_pressed("attack"):
+	if !up_attacked and Input.is_action_just_pressed("attack"):
 		linear_vel.y = -jump_height
 		up_attacked = true
 		
@@ -117,3 +123,10 @@ func _physics_process(delta):
 		anim_tree["parameters/conditions/up_attacked"] = true
 		yield(get_tree().create_timer(0.29), "timeout")
 		anim_tree["parameters/conditions/up_attacked"] = false
+	
+	if swoosh.visible:
+		removeTile(swoosh.global_position)
+		removeTile(swoosh.global_position + Vector2(-20, 20))
+		removeTile(swoosh.global_position + Vector2(20, 20))
+		removeTile(swoosh.global_position + Vector2(-20, -20))
+		removeTile(swoosh.global_position + Vector2(20, -20))
