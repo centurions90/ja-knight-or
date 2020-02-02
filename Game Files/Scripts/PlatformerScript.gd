@@ -130,3 +130,4 @@ func _physics_process(delta):
 		removeTile(swoosh.global_position + Vector2(20, 20))
 		removeTile(swoosh.global_position + Vector2(-20, -20))
 		removeTile(swoosh.global_position + Vector2(20, -20))
+		removeTile(swoosh.global_position + Vector2(0, 50))

@@ -9,12 +9,13 @@ export(float) var difficulty
 
 onready var player = get_node("../Platform Character")
 onready var tiles:TileMap = get_node("../TileMap")
-onready var cracks:TileMap = get_node("../Cracks")
+onready var cracks:TileMap = get_node("../Cracks") 
 
 var rand = RandomNumberGenerator.new()
 
 func _ready():
 	rand.randomize()
+	difficultyCurve()
 
 func spawnMissions():
 	var temp = difficulty
@@ -47,8 +48,9 @@ func spawnMissions():
 			temp -= 1
 		
 		tile = 0
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(3.0), "timeout")
 
-func _process(delta):
-	if Input.is_action_just_pressed("look_down"):
+func difficultyCurve():
+	while true:
 		spawnMissions()
+		yield(get_tree().create_timer(5.0), "timeout")
